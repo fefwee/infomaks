@@ -24,6 +24,7 @@ yarn generate
 
 ```bash
 npm run generate
+
 ```
 
 ---

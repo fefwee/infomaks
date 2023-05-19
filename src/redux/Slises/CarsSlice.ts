@@ -1,4 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice,PayloadAction} from '@reduxjs/toolkit'
+import { fetchGetCars } from '../queryAsync/asyncCars'
 
 
 
@@ -10,9 +11,9 @@ import {createSlice} from '@reduxjs/toolkit'
     model_year:number
     img_src: string
     price:number
-    description:string
-    availability:boolean
+   
 }
+
 
 interface carArr{
     cars:car[]
@@ -26,7 +27,14 @@ const carsSlice = createSlice({
     name:'cars',
     initialState,
     reducers:{
+    },
+    extraReducers:(builder)=>{
+        builder.
+        addCase(fetchGetCars.fulfilled,(state,actions:PayloadAction<car[]>)=>{
+            state.cars = actions.payload
+        })
     }
+    
 })
 
 export default carsSlice.reducer

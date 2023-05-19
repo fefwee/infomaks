@@ -11,5 +11,6 @@ export const GLOBAL_STYLES = {
   } as const,
   "html, body, #root": {
     height: "100%",
+  
   },
 };

@@ -1,14 +1,14 @@
 import { Global } from "@emotion/react";
-import { FC } from "react";
+import { FC, ReactElement } from "react";
 import { GLOBAL_STYLES } from "./styles/global.styles";
 import { HeaderContainer } from "./components/header/HeaderContainer";
-import { FilterAndSearchContainer } from "./components/SearchAndFilter/FilterAndSearchContainer";
-import { CarsPlace } from "./components/carsPlace/CarsPlace";
+import { CarsPlace } from "./components/CarsPlace/Index";
+import { FilterAndSearchContainer } from "./components/SearchAndFilter";
 
-const App: FC = () => {
+const App: FC = ():ReactElement => {
   return (
 
-    <div >
+    <div>
       <Global styles={GLOBAL_STYLES} />
       <div
         css={{
