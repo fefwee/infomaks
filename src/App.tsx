@@ -1,32 +1,24 @@
 import { Global } from "@emotion/react";
+import { Route, Routes } from "react-router-dom";
 import { FC, ReactElement } from "react";
 import { GLOBAL_STYLES } from "./styles/global.styles";
 import { HeaderContainer } from "./components/header/HeaderContainer";
-import { CarsPlace } from "./components/CarsPlace/Index";
-import { FilterAndSearchContainer } from "./components/SearchAndFilter";
+import { Home } from "./components/home/Index";
+import { CarItem } from "./components/favoriteCar/CarItem";
+{/* <Global styles={GLOBAL_STYLES} /> */ }
 
-const App: FC = ():ReactElement => {
+const App: FC = (): ReactElement => {
   return (
-
     <div>
-      <Global styles={GLOBAL_STYLES} />
-      <div
-        css={{
-          padding: '17px 40px',
-          borderBottom: '1px solid #D9D9D9'
-        }}>
-        <HeaderContainer />
-      </div>
-      <div
-        css={{
-          display: 'block',
-          margin: '0px 40px',
-        }} >
-        <FilterAndSearchContainer />
-      </div>
-      <div>
-        <CarsPlace />
-      </div>
+      <Routes>
+          <Route path="/" element={<HeaderContainer />}>
+          <Route index element={<Home />} />
+          <Route path="/id" element={<CarItem/>} />
+        </Route>
+      </Routes>
+
+
+
 
     </div>
   );

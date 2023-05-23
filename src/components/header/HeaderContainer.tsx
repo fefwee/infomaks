@@ -2,10 +2,12 @@ import { FC } from "react";
 import { Catalog } from "./CatalogSelect";
 import { AdressAndNumbers } from "./AdressAndNumber";
 import { Favorites } from "./Favorites";
+import { Outlet } from "react-router-dom";
 
 export const HeaderContainer: FC = () => {
     return (
-        <div css = {{
+        <>
+        <header css = {{
             display:'flex',
             justifyContent:'space-between',
         }}>
@@ -24,6 +26,8 @@ export const HeaderContainer: FC = () => {
                
                 <Favorites />
             </div>
-        </div>
+        </header>
+        <Outlet/>
+        </>
     );
 };

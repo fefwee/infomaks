@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import carsSlice  from "./Slises/CarsSlice";
+import carsSlice  from "./createSlices/CarsSlice";
 
 
 
@@ -13,3 +13,4 @@ export default store
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch;
+console.log(store.getState());

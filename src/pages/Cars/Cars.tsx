@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import carsJSON from "../../fake_cars.json";
 import { Query } from "../../graphql/generated";
 import { useAppDispatch } from "../../hook/hook";
-import { fetchGetCars } from "../../redux/queryAsync/asyncCars";
+import { fetchGetCars } from "../../redux/createActions/carActions";
 
 const Cars: FC = () => {
   const cars: Query["cars"] = carsJSON;

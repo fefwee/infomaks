@@ -2,7 +2,7 @@ import { FC, ReactElement, useState } from "react";
 import sort from '../../../public/Sort.png'
 
 
-const selectOptions = ['Сначала в наличии',
+const selectOptions:string[] = ['Сначала в наличии',
     'По имени (A-Z)',
     'По имени (Z-A)',
     'Сначала новее',
@@ -15,33 +15,38 @@ export const Filter: FC = (): ReactElement => {
 
 
     const [open, setIsOpen] = useState<boolean>(false)
-    const [options, setOptions] = useState(null)
+    const [options, setOptions] = useState<null>(null)
 
 
 
-    const toggleSort = () => {
+    const toggleSort = ():void => {
         setIsOpen(!open)
     }
 
 
-    const changeOptions = (value: any) => {
+    const changeOptions = (value:any):void => {
         setOptions(value)
         setIsOpen(false)
-        console.log(options)
 
     }
 
 
     return (
         <div>
-
             <div css={{
                 display: 'flex',
                 position: 'relative'
             }}>
-                <span><img src={sort} alt="sort" /></span>
-                <p onClick={() => toggleSort()}>
-                    {options}
+                <span css = {{
+                    position:'absolute',
+                    marginLeft:'-12px'
+                }}><img src={sort} alt="sort" /></span>
+                <p onClick={() => toggleSort()}
+                css = {{
+                    cursor:'pointer',
+                    padding:'0 0 0 5px'
+                }}>
+                    {options || selectOptions[0]}
                 </p>
             </div>
 
@@ -66,7 +71,7 @@ export const Filter: FC = (): ReactElement => {
                         }
                     }}>
                         {selectOptions.map(options => (
-                            <li onClick={() => changeOptions(options)}>{options}</li>
+                            <li  onClick={() => changeOptions(options)}>{options}</li>
                         ))}
 
                     </ul>
