@@ -1,19 +1,16 @@
 import {  ReactElement, useState} from "react";
 import searchIcon from '../../../public/search-button.png'
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
-import { fetchSearchCars } from "../../redux/createActions/carActions";
+import { fetchGetCars, fetchSearchCars } from "../../redux/createActions/carActions";
 
 export const Search= ():ReactElement => {
-
+    const dispatch = useAppDispatch();
 
     const [value,setValue] = useState<string>('')
-    
-    
-   const dispatch = useAppDispatch();
 
-   
-
-
+    if(value.length == 0){
+        dispatch(fetchGetCars())   
+    }
 
     return (
         <div>
@@ -28,7 +25,6 @@ export const Search= ():ReactElement => {
                     borderRadius: '5px'
                 }}>
                 <input type="text" placeholder="Найти авто"
-               /*      onChange={handleInputValueChange} */
                value={value}
                onChange={(e)=> setValue(e.target.value)}
             

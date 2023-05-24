@@ -1,8 +1,11 @@
 import { FC, ReactElement, useState } from "react";
 import sort from '../../../public/Sort.png'
+import { useAppDispatch, useAppSelector } from "../../hook/hook";
+import { fetchGetCars } from "../../redux/createActions/carActions";
 
 
-const selectOptions:string[] = ['Сначала в наличии',
+const selectOptions: string[] = [
+    'Сначала в наличии',
     'По имени (A-Z)',
     'По имени (Z-A)',
     'Сначала новее',
@@ -13,18 +16,37 @@ const selectOptions:string[] = ['Сначала в наличии',
 
 export const Filter: FC = (): ReactElement => {
 
-
+    const { cars} = useAppSelector(state => state.cars)
     const [open, setIsOpen] = useState<boolean>(false)
-    const [options, setOptions] = useState<null>(null)
+    const [options, setOptions] = useState<string>('')
+    const dispatch = useAppDispatch()
+
+  
+    
 
 
 
-    const toggleSort = ():void => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const toggleSort = (): void => {
         setIsOpen(!open)
     }
 
 
-    const changeOptions = (value:any):void => {
+    const changeOptions = (value: any) => {
         setOptions(value)
         setIsOpen(false)
 
@@ -37,16 +59,18 @@ export const Filter: FC = (): ReactElement => {
                 display: 'flex',
                 position: 'relative'
             }}>
-                <span css = {{
-                    position:'absolute',
-                    marginLeft:'-12px'
-                }}><img src={sort} alt="sort" /></span>
-                <p onClick={() => toggleSort()}
-                css = {{
-                    cursor:'pointer',
-                    padding:'0 0 0 5px'
-                }}>
-                    {options || selectOptions[0]}
+                <span
+                    onClick={() => toggleSort()}
+                    css={{
+                        position: 'absolute',
+                        marginLeft: '-12px'
+                    }}><img src={sort} alt="sort" /></span>
+                <p
+                    css={{
+                        cursor: 'pointer',
+                        padding: '0 0 0 5px'
+                    }}>
+                    {options}
                 </p>
             </div>
 
@@ -70,8 +94,8 @@ export const Filter: FC = (): ReactElement => {
                             }
                         }
                     }}>
-                        {selectOptions.map(options => (
-                            <li  onClick={() => changeOptions(options)}>{options}</li>
+                        {selectOptions.map((options, index) => (
+                            <li onClick={() => changeOptions(options)} key={index}>{options}</li>
                         ))}
 
                     </ul>

@@ -5,20 +5,20 @@ import { Car } from "../carPlace/Car";
 
 
 export const Home = (): ReactElement => {
-
-
-
-
-
-
-
     return (
         <div>
-            <div>
+            <div css = {{
+                display:'flex',
+                justifyContent:'space-between'
+            }}>
                 <Filter />
                 <Search />
             </div>
-            <div > 
+            <div css = {{
+                marginTop:'100px',
+                zIndex:'0'
+            }}  
+            > 
             <Car />
             </div>
             

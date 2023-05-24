@@ -13,7 +13,8 @@ const App: FC = (): ReactElement => {
       <Routes>
           <Route path="/" element={<HeaderContainer />}>
           <Route index element={<Home />} />
-          <Route path="/id" element={<CarItem/>} />
+          <Route path="carItem" element={<CarItem/>} />
+          <Route path="favoriteCar" element= {<CarItem/>}/>
         </Route>
       </Routes>
 

@@ -1,8 +1,7 @@
-import { ReactElement, useState, useEffect } from "react";
+import { ReactElement,useEffect } from "react";
 import icon_favorite from '../../../public/Saved@2x.png'
-import { fetchGetCars } from "../../redux/createActions/carActions";
+import { fetchAddFavoriteCars, fetchGetCars } from "../../redux/createActions/carActions";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
-import { Link } from "react-router-dom";
 
 
 
@@ -11,17 +10,20 @@ import { Link } from "react-router-dom";
 export const Car= ():ReactElement => {
 
     const dispatch = useAppDispatch()
-    const { cars,searchModel } = useAppSelector(state => state.cars)
+    const { cars} = useAppSelector(state => state.cars)
+
+    const addFavoriteCar = (id:number) =>{
+            dispatch(fetchAddFavoriteCars(id))
+    }
 
     useEffect(() => {
         dispatch(fetchGetCars())
     },
         [dispatch])
 
-        
+     
+    
 
-
-         /* const data = cars.filter(item=> item.brand.toLowerCase().includes(searchModel))  */
 
     return (
         <div css={{
@@ -75,7 +77,11 @@ export const Car= ():ReactElement => {
                                 border: 'none',
                                 borderRadius: '5px'
                             }}>Pay</button>
+                            <span 
+                            onClick={()=>addFavoriteCar(item.id)}>
                             <img src={icon_favorite} alt="favorite" />
+                            </span>
+                         
                         </div>
                     </div>
                 )
