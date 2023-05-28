@@ -1,44 +1,21 @@
 import { FC, ReactElement, useState } from "react";
 import sort from '../../../public/Sort.png'
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
+import { setSortItem } from "../../redux/createSlices/CarsSlice";
 import { fetchGetCars } from "../../redux/createActions/carActions";
 
+interface select {
+    selectOptions: string[]
+}
 
-const selectOptions: string[] = [
-    'Сначала в наличии',
-    'По имени (A-Z)',
-    'По имени (Z-A)',
-    'Сначала новее',
-    'Сначала старше',
-    'Сначала дешевле',
-    'Сначала дороже']
+export const Filter: FC<select> = ({ selectOptions }): ReactElement => {
 
-
-export const Filter: FC = (): ReactElement => {
-
-    const { cars} = useAppSelector(state => state.cars)
+    //open select 
     const [open, setIsOpen] = useState<boolean>(false)
-    const [options, setOptions] = useState<string>('')
-    const dispatch = useAppDispatch()
 
-  
-    
+    const dispatch = useAppDispatch();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    const { sortItem } = useAppSelector(state => state.cars)
 
 
     const toggleSort = (): void => {
@@ -47,8 +24,9 @@ export const Filter: FC = (): ReactElement => {
 
 
     const changeOptions = (value: any) => {
-        setOptions(value)
+        dispatch(setSortItem(value))
         setIsOpen(false)
+        dispatch(fetchGetCars())
 
     }
 
@@ -70,7 +48,7 @@ export const Filter: FC = (): ReactElement => {
                         cursor: 'pointer',
                         padding: '0 0 0 5px'
                     }}>
-                    {options}
+                    {sortItem}
                 </p>
             </div>
 

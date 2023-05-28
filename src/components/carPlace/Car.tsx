@@ -1,32 +1,26 @@
-import { ReactElement,useEffect } from "react";
+import { ReactElement,useEffect,FC } from "react";
 import icon_favorite from '../../../public/Saved@2x.png'
 import { fetchAddFavoriteCars, fetchGetCars } from "../../redux/createActions/carActions";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
+import { setSortItem } from "../../redux/createSlices/CarsSlice";
 
-
-
-//envirment variable
 
 export const Car= ():ReactElement => {
 
     const dispatch = useAppDispatch()
+
     const { cars} = useAppSelector(state => state.cars)
+    
 
     const addFavoriteCar = (id:number) =>{
             dispatch(fetchAddFavoriteCars(id))
     }
-
-    useEffect(() => {
-        dispatch(fetchGetCars())
-    },
-        [dispatch])
-
-     
     
-
-
     return (
         <div css={{
+            display:'grid',
+            gridTemplateColumns:'1fr 1fr 1fr 1fr',
+            marginTop:'200px',
             width: '300px',
             height: '360px',
             marginRight: '10px',

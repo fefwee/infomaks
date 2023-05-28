@@ -8,10 +8,10 @@ export const Search= ():ReactElement => {
 
     const [value,setValue] = useState<string>('')
 
-    if(value.length == 0){
+     if(value.length == 0){
         dispatch(fetchGetCars())   
     }
-
+ 
     return (
         <div>
             <div
