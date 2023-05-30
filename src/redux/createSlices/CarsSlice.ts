@@ -12,7 +12,7 @@ export interface cars {
   color: string;
   model_year: number;
   img_src: string;
-  price: number;
+  price: string;
   availability: boolean;
 }
 export interface car {
@@ -22,7 +22,7 @@ export interface car {
   color: string;
   model_year: number;
   img_src: string;
-  price: number;
+  price: string;
   availability: boolean;
   description: string;
 }
@@ -47,7 +47,7 @@ export interface carArr {
 
 const initialState: carArr = {
   cars: [],
-  sortItem:'',
+  sortItem: "",
   success: null,
   filterCar: [],
 };
@@ -67,37 +67,57 @@ const carsSlice = createSlice({
     },
     setSortItem: (state, actions) => {
       state.sortItem = actions.payload;
-      
     },
-    
   },
   extraReducers: (builder) => {
     builder
       .addCase(
         fetchGetCars.fulfilled,
         (state, actions: PayloadAction<cars[]>) => {
-
           state.cars = actions.payload;
           switch (state.sortItem) {
-            case  'Сначала в наличии':
-            const filter = state.cars.filter(item => item.availability != false)
-            state.cars = filter;
-            break
-            case 'По имени (A-Z)':
-            const filtername = state.cars
-            break
-            case  'Сначала новее':
-              const filterYears = state.cars.sort((a,b) => a.model_year - b.model_year)
-              state.cars = filterYears;
-              break
-              case 'Сначала дешевле':
-            const filterPriceDown = state.cars.sort((a,b) => a.price - b.price)
-            state.cars = filterPriceDown
-            break
-            case  'Сначала дороже':
-              const filterPriceUp = state.cars.sort((a,b) => b.price - a.price)
-              state.cars = filterPriceUp
-          
+            case "Сначала в наличии":
+              const filter = state.cars.filter(
+                (item) => item.availability != false
+              );
+              state.cars = filter;
+              break;
+            case "По имени (A-Z)":
+              const filterName = state.cars.sort((a,b)=> a.brand.toLowerCase() > b.brand.toLowerCase() ? 1 : -1
+              );
+              state.cars = filterName;
+              break;
+            case 'По имени (Z-A)':
+              const filterNameReverse = state.cars.sort((a,b)=> a.brand.toLowerCase() < b.brand.toLowerCase() ? 1 : -1
+              );
+              state.cars = filterNameReverse;
+              break;
+            case "Сначала новее":
+              const filterYearsDown = state.cars.sort(
+                (a, b) => b.model_year - a.model_year
+              );
+              state.cars = filterYearsDown;
+              break;
+            case "Сначала старше":
+              const filterYearsUp = state.cars.sort(
+                (a, b) => a.model_year - b.model_year
+              );
+              state.cars = filterYearsUp;
+              break;
+            case "Сначала дешевле":
+              const filterPriceDown = state.cars.sort(
+                (a: any, b: any) =>
+                  a.price.replace(/\D/g, "") - b.price.replace(/\D/g, "")
+              );
+              state.cars = filterPriceDown;
+              break;
+            case "Сначала дороже":
+              const filterPriceUp = state.cars.sort(
+                (a: any, b: any) =>
+                b.price.replace(/\D/g, "") - a.price.replace(/\D/g, "")
+              );
+              state.cars = filterPriceUp;
+
             default:
               break;
           }
