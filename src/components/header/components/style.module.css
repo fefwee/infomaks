@@ -1,0 +1,28 @@
+.adress_number {
+    display: flex;
+
+}
+.adress_number h4 {
+    margin-right: 31px;
+}
+.catalog_select {
+    display: flex;
+    align-items: center;
+}
+.catalog_select img:first-child{
+    margin-right: 21px;
+}
+.favorite_box{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.favorite_box p {
+    margin-left: 12px;
+}
+.favorite_img{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+

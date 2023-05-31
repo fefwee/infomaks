@@ -3,21 +3,16 @@ import { useAppDispatch, useAppSelector } from "../../hook/hook"
 import { removeCar } from "../../redux/createSlices/CarsSlice"
 
 
+
 export const CarItem = (): ReactElement => {
 
     const { filterCar, success } = useAppSelector(state => state.cars)
     const dispatch = useAppDispatch()
 
-    const remove:any = (id:number)=>{
+    const remove = (id:number)=>{
         dispatch(removeCar(id))
     }
-    
-     
-     
 
-    
-    
-    
     return (
         <>
          <div>
@@ -27,7 +22,7 @@ export const CarItem = (): ReactElement => {
         {filterCar.map(item=>{
             return (
                 <div key={item.id}>
-                    <div><img src={`http://localhost:4000${item.img_src}`} alt="car" /></div>
+                    <div><img src={`${process.env.REACT_APP_BASE_URL_IMG + item.img_src}`} alt="car" /></div>
                     <div>
                         <h2>{item.model}</h2>
                         <h3>{item.brand}</h3>

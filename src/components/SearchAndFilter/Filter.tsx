@@ -1,14 +1,15 @@
-import { FC, ReactElement, useState } from "react";
-import sort from '../../../public/Sort.png'
+import { FC, useState } from "react";
+import sort from '../../../public/images/Sort.png'
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
 import { setSortItem } from "../../redux/createSlices/CarsSlice";
 import { fetchGetCars } from "../../redux/createActions/carActions";
+import style from './searchFilter.module.css'
 
 interface select {
     selectOptions: string[]
 }
 
-export const Filter: FC<select> = ({ selectOptions }): ReactElement => {
+export const Filter: FC<select> = ({ selectOptions }) => {
 
     //open select 
     const [open, setIsOpen] = useState<boolean>(false)
@@ -27,54 +28,28 @@ export const Filter: FC<select> = ({ selectOptions }): ReactElement => {
         dispatch(setSortItem(value))
         setIsOpen(false)
         dispatch(fetchGetCars())
-
     }
 
 
     return (
         <div>
-            <div css={{
-                display: 'flex',
-                position: 'relative'
-            }}>
-                <span
-                    onClick={() => toggleSort()}
-                    css={{
-                        position: 'absolute',
-                        marginLeft: '-12px'
-                    }}><img src={sort} alt="sort" /></span>
-                <p
-                    css={{
-                        cursor: 'pointer',
-                        padding: '0 0 0 5px'
-                    }}>
-                    {sortItem}
+            <div className={style.filter_box}>
+                <span>
+                    <img src={sort} alt="sort" />
+                </span>
+                <p  onClick={() => toggleSort()}>
+                    {sortItem }
                 </p>
             </div>
-
             {open &&
 
-                <div css={{
-                    position: 'absolute',
-                    background: '#fffff',
-                }}>
-                    <ul css={{
-                        width: '206px',
-                        backgroundColor: '#ffffff',
-                        listStyle: 'none',
-                        border: '1px solid #000000',
-                        "li": {
-                            width: '100%',
-                            padding: '5px  0 0 5px',
-                            cursor: 'pointer',
-                            ":hover": {
-                                backgroundColor: '#1E8FFF'
-                            }
-                        }
-                    }}>
+                <div className={style.drop_box}>
+                    <ul >
                         {selectOptions.map((options, index) => (
                             <li onClick={() => changeOptions(options)} key={index}>{options}</li>
-                        ))}
+                        )
+                        )
+                        }
 
                     </ul>
                 </div>

@@ -1,30 +1,22 @@
 import { FC } from "react";
-import { Catalog } from "./CatalogSelect";
-import { AdressAndNumbers } from "./AdressAndNumber";
-import { Favorites } from "./Favorites";
+import { Catalog } from "./components/CatalogSelect";
+import { AdressAndNumbers } from "./components/AdressAndNumber";
+import { Favorites } from "./components/Favorites";
 import { Outlet } from "react-router-dom";
+import style from './Header.module.css'
 
 export const HeaderContainer: FC = () => {
     return (
         <>
-        <header css = {{
-            display:'flex',
-            justifyContent:'space-between',
-        }}>
+        <header className={style.header}>
             <div>
                 <Catalog />
             </div>
-            <div css = {{
-                display:'flex',
-                alignItems:'center',
-            }}>
-                <div css = {{
-                    marginRight:'136px'
-                }}>
+            <div className={style.adress_favorites}>
+                <div className={style.adress}>
                 <AdressAndNumbers />
                 </div>
-               
-                <Favorites />
+                <Favorites />                
             </div>
         </header>
         <Outlet/>

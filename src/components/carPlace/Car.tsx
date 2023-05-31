@@ -1,82 +1,75 @@
-import { ReactElement,useEffect,FC } from "react";
-import icon_favorite from '../../../public/Saved@2x.png'
-import { fetchAddFavoriteCars, fetchGetCars } from "../../redux/createActions/carActions";
+import { FC } from "react";
+import icon_favorite from '../../../public/images/favoriteIcon.png'
+import avaiabilityIcon from '../../../public/images/avaibilityBtn.png'
+import { fetchAddFavoriteCars } from "../../redux/createActions/carActions";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
-import { setSortItem } from "../../redux/createSlices/CarsSlice";
+import style from './Car.module.css'
 
 
-export const Car= ():ReactElement => {
+export const Car: FC = () => {
 
     const dispatch = useAppDispatch()
 
-    const { cars} = useAppSelector(state => state.cars)
-    
+    const { cars } = useAppSelector(state => state.cars)
 
-    const addFavoriteCar = (id:number) =>{
-            dispatch(fetchAddFavoriteCars(id))
+
+    const addFavoriteCar = (id: number) => {
+        dispatch(fetchAddFavoriteCars(id))
     }
-    
-    return (
-        <div css={{
-            display:'grid',
-            gridTemplateColumns:'1fr 1fr 1fr 1fr',
-            marginTop:'200px',
-            width: '300px',
-            height: '360px',
-            marginRight: '10px',
-            position: 'relative'
+    console.log(import.meta.env.VITE_REACT_APP_BASE_URL_IMG);
 
-        }}>
+
+    return (
+        <div className={style.car_box}>
             {cars.map((item) => {
                 return (
 
-                    <div key={item.id}>
+                    <div className={style.car_box_item} key={item.id}>
                         {item.availability ?
+                            <>
+                                <img className={style.img_car}
+                                    src={`${process.env.REACT_APP_BASE_URL_IMG + item.img_src}`} alt="icon" />
+                                <h3>{item.brand}{item.model}</h3>
+                                <div className={style.description}>
+                                    <span>Год:{item.model_year}</span>
+                                    <span>Цвет:{item.color}</span>
+                                </div>
+                                <h4>ОТ {item.price}</h4>
+                                <div className={style.btn_pay}>
+                                    <button>Купить</button>
+                                    <span
+                                        onClick={() => addFavoriteCar(item.id)}>
+                                        <img className={style.favorite_icon} src={icon_favorite} alt="favorite" />
+                                    </span>
 
-                            <img src={`http://localhost:4000${item.img_src}`} alt="icon"
-                                css={{
-                                    border: '1px solid #D9D9D9',
-                                    maxWidth: '280px',
-                                    maxHeight: '220px',
-                                    borderRadius: '15px 15px 0px 0px',
-                                }} />
+                                </div>
+                            </>
+
                             :
                             <>
-                                <img src={`http://localhost:4000${item.img_src}`} alt="icon"
-                                    css={{
-                                        border: '1px solid #D9D9D9',
-                                        opacity: '0.3',
-                                        width: '280px',
-                                        MaxHeight: '220px',
-                                        borderRadius: '15px 15px 0px 0px',
-                                    }} />
-                                {<p css={{
-                                    padding: '10px 15px',
-                                    backgroundColor: '#000000',
-                                    color: 'white'
-                                }}>Нет в наличии</p>}
+                                <img className={`${style.img_car_avaiability} ${style.img_car}`} src={`${process.env.REACT_APP_BASE_URL_IMG + item.img_src}`} alt="icon"
+                                />
+                                <p className={style.availability_position}>Нет в наличии</p>
+                                <h3>{item.brand}{item.model}</h3>
+                                <div className={style.description}>
+                                    <span>Год:{item.model_year}</span>
+                                    <span>Цвет:{item.color}</span>
+                                </div>
+                                <h4>ОТ {item.price}</h4>
+                                <div className={style.btn_pay}>
+                                    <button className={style.availability_btn}>Купить</button>
+                                    <span
+                                        onClick={() => addFavoriteCar(item.id)}>
+                                        <img className={style.favorite_icon} src={avaiabilityIcon} alt="favorite" />
+                                    </span>
+
+                                </div>
+
                             </>
+
                         }
 
-                        <h3>{item.brand} {item.model}</h3>
-                        <p>Год:{item.model_year}</p>
-                        <p>Цвет:{item.color}</p>
-                        <h4>ОТ {item.price}</h4>
-                        <div>
-                            <button
-                            css={{
-                                width: '154px',
-                                height: '36px',
-                                backgroundColor: '#4F2CD9',
-                                border: 'none',
-                                borderRadius: '5px'
-                            }}>Pay</button>
-                            <span 
-                            onClick={()=>addFavoriteCar(item.id)}>
-                            <img src={icon_favorite} alt="favorite" />
-                            </span>
-                         
-                        </div>
+
                     </div>
                 )
             })

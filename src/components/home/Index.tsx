@@ -1,18 +1,13 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect } from "react";
 import { Filter } from "../SearchAndFilter/Filter";
 import { Search } from "../SearchAndFilter/Search";
 import { Car } from "../carPlace/Car";
-import { useAppDispatch, useAppSelector } from "../../hook/hook";
+import { useAppDispatch } from "../../hook/hook";
 import { setSortItem } from "../../redux/createSlices/CarsSlice";
-import { fetchGetCars } from "../../redux/createActions/carActions";
+import style from './index.module.css'
 
 
 export const Home = (): ReactElement => {
-
-
-
-   
-    
 
     const dispatch = useAppDispatch();
 
@@ -25,31 +20,22 @@ export const Home = (): ReactElement => {
         'Сначала дешевле',
         'Сначала дороже'
     ]
- 
-  useEffect(() => {
+
+    useEffect(() => {
         dispatch(setSortItem(selectOptions[0]))
-
-
     },
         [dispatch])
 
     return (
         <div>
-            <div css = {{
-                display:'flex',
-                justifyContent:'space-between'
-            }}>
-                <Filter selectOptions = {selectOptions} />
+            <div className={style.index_box}>
+                <Filter selectOptions={selectOptions} />
                 <Search />
             </div>
-            <div css = {{
-                marginTop:'100px',
-                zIndex:'0'
-            }}  
-            > 
-            <Car />
+            <div>
+                <Car />
             </div>
-            
+
         </div>
 
     );

@@ -1,23 +1,33 @@
-import { defineConfig } from "vite";
+import { defineConfig,loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  build: {
-    outDir: "dist",
-  },
-  server: {
-    port: 3000,
-  },
-  esbuild: {
-    logOverride: { "this-is-undefined-in-esm": "silent" },
-  },
-  plugins: [
-    react({
-      jsxImportSource: "@emotion/react",
-      babel: {
-        plugins: ["@emotion/babel-plugin"],
-      },
-    }),
-  ],
+
+export default defineConfig(({mode})=>{
+  const env = loadEnv(mode, process.cwd(), '');
+  return {
+    define : {
+      'process.env.REACT_APP_BASE_URL_IMG':JSON.stringify(env.REACT_APP_BASE_URL_IMG)
+    },
+    build: {
+      outDir: "dist",
+    },
+    server: {
+      port: 3000,
+    },
+    esbuild: {
+      logOverride: { "this-is-undefined-in-esm": "silent" },
+    },
+    plugins: [
+      react({
+        jsxImportSource: "@emotion/react",
+        babel: {
+          plugins: ["@emotion/babel-plugin"],
+        },
+      }),
+    ],
+    
+  }
+
+  
 });

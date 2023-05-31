@@ -4,6 +4,7 @@ import {
   fetchGetCars,
   fetchSearchCars,
 } from "../createActions/carActions";
+import { filterArr } from "../sort/sortElements";
 
 export interface cars {
   id: number;
@@ -79,16 +80,18 @@ const carsSlice = createSlice({
             case "Сначала в наличии":
               const filter = state.cars.filter(
                 (item) => item.availability != false
-              );
-              state.cars = filter;
+              ); 
+              state.cars = filter
               break;
             case "По имени (A-Z)":
-              const filterName = state.cars.sort((a,b)=> a.brand.toLowerCase() > b.brand.toLowerCase() ? 1 : -1
+              const filterName = state.cars.sort((a, b) =>
+                a.brand.toLowerCase() > b.brand.toLowerCase() ? 1 : -1
               );
               state.cars = filterName;
               break;
-            case 'По имени (Z-A)':
-              const filterNameReverse = state.cars.sort((a,b)=> a.brand.toLowerCase() < b.brand.toLowerCase() ? 1 : -1
+            case "По имени (Z-A)":
+              const filterNameReverse = state.cars.sort((a, b) =>
+                a.brand.toLowerCase() < b.brand.toLowerCase() ? 1 : -1
               );
               state.cars = filterNameReverse;
               break;
@@ -114,11 +117,12 @@ const carsSlice = createSlice({
             case "Сначала дороже":
               const filterPriceUp = state.cars.sort(
                 (a: any, b: any) =>
-                b.price.replace(/\D/g, "") - a.price.replace(/\D/g, "")
+                  b.price.replace(/\D/g, "") - a.price.replace(/\D/g, "")
               );
               state.cars = filterPriceUp;
 
             default:
+              state.cars = actions.payload
               break;
           }
           state.success = true;

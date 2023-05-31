@@ -1,0 +1,13 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding:17px 0px;
+}
+.adress_favorites {
+    display: flex;
+    align-items: center;
+}
+.adress{
+    margin-right: 136px;
+}
+
