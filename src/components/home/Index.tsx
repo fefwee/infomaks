@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { Filter } from "../SearchAndFilter/Filter";
 import { Search } from "../SearchAndFilter/Search";
 import { Car } from "../carPlace/Car";
@@ -7,7 +7,7 @@ import { setSortItem } from "../../redux/createSlices/CarsSlice";
 import style from './index.module.css'
 
 
-export const Home = (): ReactElement => {
+export const Home:FC = () => {
 
     const dispatch = useAppDispatch();
 

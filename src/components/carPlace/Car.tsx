@@ -16,7 +16,6 @@ export const Car: FC = () => {
     const addFavoriteCar = (id: number) => {
         dispatch(fetchAddFavoriteCars(id))
     }
-    console.log(import.meta.env.VITE_REACT_APP_BASE_URL_IMG);
 
 
     return (
@@ -36,7 +35,7 @@ export const Car: FC = () => {
                                 </div>
                                 <h4>ОТ {item.price}</h4>
                                 <div className={style.btn_pay}>
-                                    <button>Купить</button>
+                                    <button className={style.btn_blue}>Купить</button>
                                     <span
                                         onClick={() => addFavoriteCar(item.id)}>
                                         <img className={style.favorite_icon} src={icon_favorite} alt="favorite" />
@@ -56,11 +55,10 @@ export const Car: FC = () => {
                                     <span>Цвет:{item.color}</span>
                                 </div>
                                 <h4>ОТ {item.price}</h4>
-                                <div className={style.btn_pay}>
+                                <div className={style.btn_disable}>
                                     <button className={style.availability_btn}>Купить</button>
-                                    <span
-                                        onClick={() => addFavoriteCar(item.id)}>
-                                        <img className={style.favorite_icon} src={avaiabilityIcon} alt="favorite" />
+                                    <span>
+                                        <img className={style.favorite_icon_disable} src={avaiabilityIcon} alt="favorite" />
                                     </span>
 
                                 </div>

@@ -4,19 +4,17 @@ import { Link } from "react-router-dom";
 import style from './style.module.css'
 
 
-export const Favorites: FC = (): ReactElement => {
+export const Favorites: FC = () => {
 
 
 
     return (
-
-
-        <Link to='favoriteCar'>
+        <Link to='favoriteCar' className={style.favorite_icon}>
             <div className={style.favorite_box}>
                 <span>
                     <img src={favoritesLogo} alt="favorites" className={style.favorite_img} />
                 </span>
-                <p>Избранное</p>
+                <p className={style.favorite_icon}>Избранное</p>
             </div>
         </Link>
 

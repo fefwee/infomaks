@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import sort from '../../../public/images/Sort.png'
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
-import { setSortItem } from "../../redux/createSlices/CarsSlice";
+import {  setSortItem } from "../../redux/createSlices/CarsSlice";
 import { fetchGetCars } from "../../redux/createActions/carActions";
 import style from './searchFilter.module.css'
 
@@ -24,7 +24,7 @@ export const Filter: FC<select> = ({ selectOptions }) => {
     }
 
 
-    const changeOptions = (value: any) => {
+    const changeOptions = (value:string) => {
         dispatch(setSortItem(value))
         setIsOpen(false)
         dispatch(fetchGetCars())
@@ -37,8 +37,8 @@ export const Filter: FC<select> = ({ selectOptions }) => {
                 <span>
                     <img src={sort} alt="sort" />
                 </span>
-                <p  onClick={() => toggleSort()}>
-                    {sortItem }
+                <p onClick={() => toggleSort()}>
+                    {sortItem}
                 </p>
             </div>
             {open &&

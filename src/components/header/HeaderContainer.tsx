@@ -8,18 +8,18 @@ import style from './Header.module.css'
 export const HeaderContainer: FC = () => {
     return (
         <>
-        <header className={style.header}>
-            <div>
-                <Catalog />
-            </div>
-            <div className={style.adress_favorites}>
-                <div className={style.adress}>
-                <AdressAndNumbers />
+            <header className={style.header}>
+                <div>
+                    <Catalog />
                 </div>
-                <Favorites />                
-            </div>
-        </header>
-        <Outlet/>
+                <div className={style.adress_favorites}>
+                    <div className={style.adress}>
+                        <AdressAndNumbers />
+                    </div>
+                    <Favorites />
+                </div>
+            </header>
+            <Outlet />
         </>
     );
 };

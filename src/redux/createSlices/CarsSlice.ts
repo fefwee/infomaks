@@ -4,7 +4,6 @@ import {
   fetchGetCars,
   fetchSearchCars,
 } from "../createActions/carActions";
-import { filterArr } from "../sort/sortElements";
 
 export interface cars {
   id: number;
@@ -42,14 +41,12 @@ export interface carFavorite {
 export interface carArr {
   cars: cars[];
   sortItem: string;
-  success: boolean | null;
   filterCar: carFavorite[];
 }
 
 const initialState: carArr = {
   cars: [],
   sortItem: "",
-  success: null,
   filterCar: [],
 };
 
@@ -57,9 +54,6 @@ const carsSlice = createSlice({
   name: "cars",
   initialState,
   reducers: {
-    reset: (state) => {
-      state.success = false;
-    },
     removeCar: (state, actions: PayloadAction<number>) => {
       const arrCars = state.filterCar.filter(
         (item) => item.id !== actions.payload
@@ -80,8 +74,8 @@ const carsSlice = createSlice({
             case "Сначала в наличии":
               const filter = state.cars.filter(
                 (item) => item.availability != false
-              ); 
-              state.cars = filter
+              );
+              state.cars = filter;
               break;
             case "По имени (A-Z)":
               const filterName = state.cars.sort((a, b) =>
@@ -109,23 +103,22 @@ const carsSlice = createSlice({
               break;
             case "Сначала дешевле":
               const filterPriceDown = state.cars.sort(
-                (a: any, b: any) =>
+                (a:any, b:any) =>
                   a.price.replace(/\D/g, "") - b.price.replace(/\D/g, "")
               );
               state.cars = filterPriceDown;
               break;
             case "Сначала дороже":
               const filterPriceUp = state.cars.sort(
-                (a: any, b: any) =>
+                (a:any, b:any) =>
                   b.price.replace(/\D/g, "") - a.price.replace(/\D/g, "")
               );
               state.cars = filterPriceUp;
 
             default:
-              state.cars = actions.payload
+              state.cars = actions.payload;
               break;
           }
-          state.success = true;
         }
       )
       .addCase(fetchGetCars.rejected, (state) => {
@@ -142,13 +135,12 @@ const carsSlice = createSlice({
       })
       .addCase(
         fetchAddFavoriteCars.fulfilled,
-        (state, actions: PayloadAction<any>) => {
+        (state, actions:PayloadAction<any>) => {
           state.filterCar.push(actions.payload);
-          state.success = true;
         }
       );
   },
 });
 
 export default carsSlice.reducer;
-export const { reset, removeCar, setSortItem } = carsSlice.actions;
+export const { removeCar, setSortItem } = carsSlice.actions;

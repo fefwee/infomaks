@@ -1,66 +1,63 @@
-.filter_box{
-    display: flex;
-    position: relative;
+.filter_box {
+  display: flex;
+  position: relative;
 }
 .filter_box p {
-    cursor:pointer;
-    padding: 0 0 0 12px;
-    font-size: 16px;
-    font-weight: 500;
-    
+  cursor: pointer;
+  padding: 0 0 0 12px;
+  font-size: 16px;
+  font-weight: 500;
 }
-.drop_box{
-    position: absolute;
-    background-color:#ffffff;
-    margin-left: 20px;
+.drop_box {
+  position: absolute;
+  background-color: #ffffff;
+  margin-left: 20px;
+  z-index: 99;
 }
 .drop_box ul {
-    width: 206px;
-    background-color: #ffffff;
-    list-style: none;
-    border: 1px solid #000000;
+  width: 206px;
+  background-color: #ffffff;
+  list-style: none;
+  border: 1px solid #000000;
 }
-.drop_box > ul > li{
-    width: 100%;
-    padding: 5px 0 0 5px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 400;
+.drop_box > ul > li {
+  width: 100%;
+  padding: 5px 0 0 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
 }
 .drop_box ul li:hover {
-    background-color: #1E8FFF;
+  background-color: #1e8fff;
 }
 
 .search_box {
-    display: flex;
-    align-items: center;
-    width: 445px;
-    border:1px solid #D9D9D9;
-    padding:4px 4px 4px 10px;
-    border-radius:5px;
-
-    
+  display: flex;
+  align-items: center;
+  width: 445px;
+  border: 1px solid #d9d9d9;
+  padding: 4px 4px 4px 10px;
+  border-radius: 5px;
 }
-.search_box input::-webkit-input-placeholder{
-    color:#D9D9D9;
+.search_box input::-webkit-input-placeholder {
+  color: #d9d9d9;
 }
 .search_box input {
-    display: flex;
-    flex-grow: 1;
-    border:none;
-    color:#000000;
-    font-size: 14px;
+  display: flex;
+  flex-grow: 1;
+  border: none;
+  color: #000000;
+  font-size: 14px;
 }
-.search_box input:focus{
-    outline: none;
+.search_box input:focus {
+  outline: none;
 }
 .search_box button {
-    background-image: url('../../../public/images/search-button.png');
-    width: 24px;
-    height: 24px;
-    border-radius: 3px;
-    outline: none;
-    cursor: pointer;
-    border:none
+  background-image: url("../../../public/images/search-button.png");
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  border: none;
 }
-

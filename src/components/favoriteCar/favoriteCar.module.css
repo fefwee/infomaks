@@ -1,0 +1,38 @@
+.favcar_box {
+  display: flex;
+  margin-top: 64px;
+}
+.favcar_box img {
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  margin-right: 20px;
+}
+.favcar_box p {
+  color: #595959;
+}
+.desc_block {
+  max-width: 810px;
+}
+.desc_block h3 {
+  padding: 16px 0 21px 0;
+}
+.desc_block p:nth-child(1n) {
+  padding: 8px 0;
+}
+h1 {
+  padding: 46px 0 26px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+.delete_btn {
+  width: 56px;
+  height: 57px;
+  background-image: url("../../../public/images/Delete\ button.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  margin-left: 20px;
+}
+.btn_block {
+  display: flex;
+  align-items: center;
+}
