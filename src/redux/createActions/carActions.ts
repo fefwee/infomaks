@@ -4,8 +4,8 @@ import { car, carFavorite } from "../createSlices/CarsSlice";
 export const fetchGetCars = createAsyncThunk<
   car[],
   undefined,
-  { rejectValue: string }
->("cars/fetchGetCars", async function (_, { rejectWithValue }) {
+  { rejectValue: string }>
+  ("cars/fetchGetCars", async function (_, { rejectWithValue }) {
   try {
     const query = await fetch("http://localhost:4000/api", {
       method: "POST",
@@ -42,8 +42,8 @@ export const fetchGetCars = createAsyncThunk<
 export const fetchSearchCars = createAsyncThunk<
   car[],
   string,
-  { rejectValue: string }
->("cars/fetchSearchCars", async function (search, { rejectWithValue }) {
+  { rejectValue: string }>
+  ("cars/fetchSearchCars", async function (search, { rejectWithValue }) {
   try {
     const query = await fetch("http://localhost:4000/api", {
       method: "POST",
@@ -77,8 +77,8 @@ export const fetchSearchCars = createAsyncThunk<
 export const fetchAddFavoriteCars = createAsyncThunk<
   carFavorite[],
   number,
-  { rejectValue: string }
->("filterCar/fetchAddFavoriteCars", async function (id, { rejectWithValue }) {
+  { rejectValue: string }>
+  ("filterCar/fetchAddFavoriteCars", async function (id, { rejectWithValue }) {
   try {
     const query = await fetch("http://localhost:4000/api", {
       method: "POST",

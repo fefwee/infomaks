@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import { FC} from "react";
 import favoritesLogo from '../../../../public/images/Saved@2x.png'
 import { Link } from "react-router-dom";
 import style from './style.module.css'
