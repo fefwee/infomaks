@@ -5,7 +5,7 @@ import {
   fetchSearchCars,
 } from "../createActions/carActions";
 
-export interface cars {
+export interface Cars {
   id: number;
   brand: string;
   model: string;
@@ -15,7 +15,7 @@ export interface cars {
   price: string;
   availability: boolean;
 }
-export interface car {
+/* export interface CarItem {
   id: number;
   brand: string;
   model: string;
@@ -25,8 +25,8 @@ export interface car {
   price: string;
   availability: boolean;
   description: string;
-}
-export interface carFavorite {
+} */
+export interface CarFavorite {
   id: number;
   brand: string;
   model: string;
@@ -38,13 +38,13 @@ export interface carFavorite {
   availability: true;
 }
 
-export interface carArr {
-  cars: cars[];
+export interface CarArr {
+  cars: Cars[];
   sortItem: string;
-  filterCar: carFavorite[];
+  filterCar: CarFavorite[];
 }
 
-const initialState: carArr = {
+const initialState: CarArr = {
   cars: [],
   sortItem: "",
   filterCar: [],
@@ -68,7 +68,7 @@ const carsSlice = createSlice({
     builder
       .addCase(
         fetchGetCars.fulfilled,
-        (state, actions: PayloadAction<cars[]>) => {
+        (state, actions: PayloadAction<Cars[]>) => {
           state.cars = actions.payload;
           switch (state.sortItem) {
             case "Сначала в наличии":
@@ -126,7 +126,7 @@ const carsSlice = createSlice({
       })
       .addCase(
         fetchSearchCars.fulfilled,
-        (state, action: PayloadAction<cars[]>) => {
+        (state, action: PayloadAction<Cars[]>) => {
           state.cars = action.payload;
         }
       )

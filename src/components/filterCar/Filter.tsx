@@ -3,15 +3,15 @@ import sort from '../../../public/images/Sort.png'
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
 import {  setSortItem } from "../../redux/createSlices/CarsSlice";
 import { fetchGetCars } from "../../redux/createActions/carActions";
-import style from './searchFilter.module.css'
+import style from './filterCar.module.css'
 
-interface select {
+interface SelectCar {
     selectOptions: string[]
 }
 
-export const Filter: FC<select> = ({ selectOptions }) => {
+export const Filter: FC<SelectCar> = ({ selectOptions }) => {
 
-    //open select 
+   
     const [open, setIsOpen] = useState<boolean>(false)
 
     const dispatch = useAppDispatch();

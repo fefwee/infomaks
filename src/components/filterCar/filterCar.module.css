@@ -1,0 +1,32 @@
+.filter_box {
+    display: flex;
+    position: relative;
+  }
+  .filter_box p {
+    cursor: pointer;
+    padding: 0 0 0 12px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .drop_box {
+    position: absolute;
+    background-color: #ffffff;
+    margin-left: 20px;
+    z-index: 99;
+  }
+  .drop_box ul {
+    width: 206px;
+    background-color: #ffffff;
+    list-style: none;
+    border: 1px solid #000000;
+  }
+  .drop_box > ul > li {
+    width: 100%;
+    padding: 5px 0 0 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .drop_box ul li:hover {
+    background-color: #1e8fff;
+  }

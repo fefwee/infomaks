@@ -1,10 +1,10 @@
 import { FC, useEffect } from "react";
-import { Filter } from "../SearchAndFilter/Filter";
-import { Search } from "../SearchAndFilter/Search";
-import { Car } from "../carPlace/Car";
 import { useAppDispatch } from "../../hook/hook";
 import { setSortItem } from "../../redux/createSlices/CarsSlice";
 import style from './index.module.css'
+import { Filter } from "../../components/filterCar/Filter";
+import { Search } from "../../components/searchCar/Search";
+import { Car } from "../../components/carPlace/Car";
 
 
 export const Home:FC = () => {
@@ -40,5 +40,4 @@ export const Home:FC = () => {
 
     );
 };
-
 

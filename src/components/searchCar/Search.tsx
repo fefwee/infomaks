@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { useAppDispatch } from "../../hook/hook";
 import { fetchGetCars, fetchSearchCars } from "../../redux/createActions/carActions";
-import style from './searchFilter.module.css'
+import style from './searchCar.module.css'
 
 export const Search: FC = () => {
     const dispatch = useAppDispatch();

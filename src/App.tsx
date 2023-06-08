@@ -3,9 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import { FC} from "react";
 import { GLOBAL_STYLES } from "./styles/global.styles";
 import { HeaderContainer } from "./components/header/HeaderContainer";
-import { Home } from "./components/home/Index";
+import { Home } from "./pages/home/Index";
 import { CarItem } from "./components/favoriteCar/CarItem";
 import style from './styles/App.module.css'
+
 const App: FC = () => {
   return (
     <div className={style.container}>
