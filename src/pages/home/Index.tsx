@@ -1,15 +1,23 @@
 import { FC, useEffect } from "react";
-import { useAppDispatch } from "../../hook/hook";
+import { useAppDispatch, useAppSelector } from "../../hook/hook";
 import { setSortItem } from "../../redux/createSlices/CarsSlice";
 import style from './index.module.css'
 import { Filter } from "../../components/filterCar/Filter";
 import { Search } from "../../components/searchCar/Search";
 import { Car } from "../../components/carPlace/Car";
+import { fetchAddFavoriteCars, fetchGetCars } from "../../redux/createActions/carActions";
 
 
-export const Home:FC = () => {
+export const Home: FC = () => {
 
     const dispatch = useAppDispatch();
+
+    const { cars } = useAppSelector(state => state.cars)
+
+
+    const addFavoriteCar = (id: number) => {
+        dispatch(fetchAddFavoriteCars(id))
+    }
 
     const selectOptions: string[] = [
         'Сначала в наличии',
@@ -22,9 +30,10 @@ export const Home:FC = () => {
     ]
 
     useEffect(() => {
+        dispatch(fetchGetCars())
         dispatch(setSortItem(selectOptions[0]))
-    },
-        [dispatch])
+    },[])
+
 
     return (
         <div>
@@ -33,11 +42,10 @@ export const Home:FC = () => {
                 <Search />
             </div>
             <div>
-                <Car />
+                <Car addFavorite={addFavoriteCar} cars={cars} />
             </div>
 
         </div>
 
     );
 };
-

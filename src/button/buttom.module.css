@@ -1,0 +1,15 @@
+    .default_btn{
+        width:254px;
+        height:56px;
+        background-Color: #4F2CD9; 
+        border-Radius: 5px;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+      }
+      .disable {
+        background-color: grey;
+      }
+      
+     

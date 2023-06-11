@@ -34,16 +34,6 @@ export const GLOBAL_STYLES = {
       fontWeight: "500",
       lineHeight: "16px",
     },
-    button: {
-      width: "254px",
-      height: "56px",
-      backgroundColor: "#4F2CD9",
-      borderRadius: "5px",
-      color: "#ffffff",
-      fontSize: "16px",
-      fontWeight: "500",
-      border: "none",
-    },
   } as const,
   "html, body, #root": {
     height: "100%",

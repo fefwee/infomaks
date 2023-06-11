@@ -15,18 +15,7 @@ export interface Cars {
   price: string;
   availability: boolean;
 }
-/* export interface CarItem {
-  id: number;
-  brand: string;
-  model: string;
-  color: string;
-  model_year: number;
-  img_src: string;
-  price: string;
-  availability: boolean;
-  description: string;
-} */
-export interface CarFavorite {
+interface CarFavorite {
   id: number;
   brand: string;
   model: string;
@@ -38,7 +27,7 @@ export interface CarFavorite {
   availability: true;
 }
 
-export interface CarArr {
+interface CarArr {
   cars: Cars[];
   sortItem: string;
   filterCar: CarFavorite[];

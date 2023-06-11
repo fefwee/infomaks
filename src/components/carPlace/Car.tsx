@@ -1,22 +1,18 @@
 import { FC } from "react";
 import icon_favorite from '../../../public/images/favoriteIcon.png'
 import avaiabilityIcon from '../../../public/images/avaibilityBtn.png'
-import { fetchAddFavoriteCars } from "../../redux/createActions/carActions";
-import { useAppDispatch, useAppSelector } from "../../hook/hook";
 import style from './Car.module.css'
+import { Cars } from "../../redux/createSlices/CarsSlice";
+import { Button } from "../../button/Button";
 
 
-export const Car: FC = () => {
 
-    const dispatch = useAppDispatch()
+interface CarProps {
+    cars:Cars[]
+    addFavorite:(id:number)=> void
+}
 
-    const { cars } = useAppSelector(state => state.cars)
-
-
-    const addFavoriteCar = (id: number) => {
-        dispatch(fetchAddFavoriteCars(id))
-    }
-
+export const Car: FC <CarProps> = ({cars,addFavorite}) => {
 
     return (
         <div className={style.car_box}>
@@ -24,7 +20,6 @@ export const Car: FC = () => {
                 return (
 
                     <div className={style.car_box_item} key={item.id}>
-                        {item.availability ?
                             <>
                                 <img className={style.img_car}
                                     src={`${process.env.REACT_APP_BASE_URL_IMG + item.img_src}`} alt="icon" />
@@ -35,15 +30,15 @@ export const Car: FC = () => {
                                 </div>
                                 <h4>ОТ {item.price}</h4>
                                 <div className={style.btn_pay}>
-                                    <button className={style.btn_blue}>Купить</button>
+                                    {item.availability ? <Button disable = {true}/>:<Button disable = {false}/>}
                                     <span
-                                        onClick={() => addFavoriteCar(item.id)}>
+                                        onClick={() => addFavorite(item.id)}>
                                         <img className={style.favorite_icon} src={icon_favorite} alt="favorite" />
                                     </span>
 
                                 </div>
                             </>
-
+{/* 
                             :
                             <>
                                 <img className={`${style.img_car_avaiability} ${style.img_car}`} src={`${process.env.REACT_APP_BASE_URL_IMG + item.img_src}`} alt="icon"
@@ -63,9 +58,8 @@ export const Car: FC = () => {
 
                                 </div>
 
-                            </>
+                            </> */}
 
-                        }
 
 
                     </div>
