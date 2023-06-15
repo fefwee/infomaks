@@ -2,6 +2,7 @@ import {FC } from "react"
 import { useAppDispatch, useAppSelector } from "../../hook/hook"
 import { removeCar } from "../../redux/createSlices/CarsSlice"
 import style from './favoriteCar.module.css'
+import { Car } from "../carPlace/Car"
 
 
 
@@ -22,7 +23,8 @@ export const CarItem:FC = () => {
 
             {filterCar.map(item => {
                 return (
-                    <div key={item.id} className={style.favcar_box} >
+                    
+                   <div key={item.id} className={style.favcar_box} >
                         <img src={`${process.env.REACT_APP_BASE_URL_IMG + item.img_src}`} alt="car" />
 
                         < div className={style.desc_block}>
@@ -36,7 +38,7 @@ export const CarItem:FC = () => {
                                 <button className={style.delete_btn} onClick={() => remove(item.id)}></button>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 )
 
             })}

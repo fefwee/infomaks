@@ -1,0 +1,12 @@
+.favorite_icon {
+    width: 27px;
+    height: 24px;
+    cursor: pointer;
+  }
+  .favorite_icon_disable {
+    width: 27px;
+    height: 24px;
+  }
+  .favorite_icon:hover {
+    background-image: url("../../../public/images/blueIcon.svg");
+  }

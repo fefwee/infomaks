@@ -5,6 +5,7 @@ import {  setSortItem } from "../../redux/createSlices/CarsSlice";
 import { fetchGetCars } from "../../redux/createActions/carActions";
 import style from './filterCar.module.css'
 
+
 interface SelectCar {
     selectOptions: string[]
 }

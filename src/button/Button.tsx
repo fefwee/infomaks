@@ -5,13 +5,13 @@ import style from './buttom.module.css'
 interface ButtonProps {
     title?: string
     variant?: string
-    disable: boolean
+    disable?: boolean
 }
 
 
 
 
-export const Button: FC<ButtonProps> = ({ title = 'купить', variant = 'default', disable }) => {
+export const Button: FC<ButtonProps> = ({ title = 'Купить', variant = 'default', disable = false }) => {
 
     return (
         <>

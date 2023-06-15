@@ -14,7 +14,6 @@ const App: FC = () => {
         <Routes>
           <Route path="/" element={<HeaderContainer />}>
             <Route index element={<Home />} />
-            <Route path="carItem" element={<CarItem />} />
             <Route path="favoriteCar" element={<CarItem />} />
           </Route>
         </Routes>

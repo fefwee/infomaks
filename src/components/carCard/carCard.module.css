@@ -1,0 +1,86 @@
+.car_box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 20px;
+    width: 300px;
+    height: 360px;
+    grid-gap: 20px;
+  }
+  .img_car {
+    width: 100%;
+    border: 1px solid #d9d9d9;
+    border-radius: 15px 15px 0 0;
+    margin-bottom: 26px;
+  }
+  .car_box_item {
+    position: relative;
+    width: 445px;
+    margin-bottom: 73px;
+  }
+  .car_box_item h3 {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .favorite_icon {
+    width: 27px;
+    height: 24px;
+    cursor: pointer;
+  }
+  .favorite_icon_disable {
+    width: 27px;
+    height: 24px;
+  }
+  .favorite_icon:hover {
+    background-image: url("../../../public/images/blueIcon.svg");
+  }
+  .car_box_item span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #595959;
+  }
+  .description {
+    margin: 12px 0;
+  }
+  .description span {
+    margin-right: 14px;
+  }
+  .btn_pay {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .btn_disable button {
+    margin-top: 20px;
+    margin-right: 25px;
+  }
+  .btn_pay button {
+    margin-right: 25px;
+    cursor: pointer;
+  }
+  .btn_pay button:hover {
+    background-color: #240c86;
+  }
+  .availability_btn {
+    background-color: #d9d9d9;
+  }
+  
+  .img_car_avaiability {
+    border: 1px solid #d9d9d9;
+    opacity: 0.3;
+    border-radius: 15px 15px 0 0;
+  }
+  .availability_position {
+    position: absolute;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    color: #ffffff;
+    padding: 15px 34px;
+    border-radius: 15px;
+  }
+  

@@ -1,19 +1,20 @@
 import { FC } from "react";
-import icon_favorite from '../../../public/images/favoriteIcon.png'
-import style from './Car.module.css'
-import { Cars } from "../../redux/createSlices/CarsSlice";
+import style from './carCard.module.css'
 import { Button } from "../../button/Button";
+import icon_favorite from '../../../public/images/favoriteIcon.png'
+import {Cars} from '../../redux/createSlices/CarsSlice'
 
 
 
-interface CarProps {
-    cars: Cars[]
-    addFavorite: (id: number) => void
+interface CardCarProps {
+    callBack:(id:number)=>void
+    cars:Cars[]
+    btnTitle?:string
 }
 
-export const Car: FC<CarProps> = ({ cars, addFavorite }) => {
-
+export const CarCard:FC<CardCarProps> = ({cars,btnTitle,callBack}) => {
     return (
+        <>
         <div className={style.car_box}>
             {cars.map((item) => {
                 return (
@@ -32,10 +33,10 @@ export const Car: FC<CarProps> = ({ cars, addFavorite }) => {
                             <h4>ОТ {item.price}</h4>
                             <div className={style.btn_pay}>
                                 {item.availability ?
-                                    <Button disable={true} variant="default" /> :
-                                    <Button disable={false} variant="disable" />}
+                                    <Button disable={true} variant="default"  title = {btnTitle}/> :
+                                    <Button disable={false} variant="disable"/>}
                                 <span
-                                    onClick={() => addFavorite(item.id)}>
+                                    onClick={() => callBack(item.id)}>
                                     <img className={style.favorite_icon} src={icon_favorite} alt="favorite" />
                                 </span>
                                 {!item.availability && <p className={style.availability_position}>Нет в наличии</p>}
@@ -46,6 +47,6 @@ export const Car: FC<CarProps> = ({ cars, addFavorite }) => {
             })
             }
         </div>
-
-    );
-};
+        </>
+    )
+}
