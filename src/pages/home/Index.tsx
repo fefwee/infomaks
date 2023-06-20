@@ -45,9 +45,6 @@ export const Home: FC = () => {
                 <Search />
             </div>
             <div>
-                {/*  <Car addFavorite={addFavoriteCar} cars={cars} /> */}
-            </div>
-            <div>
                 <CarCard cars={cars}
                     callBack={addFavoriteCar}
                 />

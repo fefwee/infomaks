@@ -2,11 +2,23 @@
     width: 27px;
     height: 24px;
     cursor: pointer;
+    background-image: url(../../../public/images/favoriteIcon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border:none;
+
   }
   .favorite_icon_disable {
     width: 27px;
     height: 24px;
+    border:1px solid red;
+    background-image: url(../../../public/images/avaibilityBtn.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border:none;
+
   }
+  
   .favorite_icon:hover {
     background-image: url("../../../public/images/blueIcon.svg");
-  }
+  } 

@@ -7,9 +7,23 @@
         font-size: 16px;
         font-weight: 500;
         border: none;
+        
+      }
+      .default_btn:hover {
+        background-color: #240c86;
       }
       .disable {
         background-color: grey;
       }
-      
+      .disable:hover{
+        background-color:grey;
+      }
+      .delete_btn {
+        width: 56px;
+        height: 57px;
+        background-image: url("../../../client/public/images/Delete\ button.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-left: 20px;
+      }
      
