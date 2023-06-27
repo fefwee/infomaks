@@ -1,5 +1,6 @@
 .filter_box {
     display: flex;
+    align-items: center;
     position: relative;
   }
   .filter_box p {

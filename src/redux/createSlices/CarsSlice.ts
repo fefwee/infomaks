@@ -14,8 +14,11 @@ export interface Cars {
   img_src: string;
   price: string;
   availability: boolean;
+  description:string
 }
-interface CarFavorite {
+
+
+export interface CarFavorite {
   id: number;
   brand: string;
   model: string;
@@ -36,8 +39,9 @@ interface CarArr {
 const initialState: CarArr = {
   cars: [],
   sortItem: "",
-  filterCar: [],
+  filterCar:[],
 };
+
 
 const carsSlice = createSlice({
   name: "cars",

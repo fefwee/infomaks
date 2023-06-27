@@ -16,8 +16,7 @@ export const Button: FC<ButtonProps> = ({ title = 'Купить', variant = 'def
     return (
         <>
             <button disabled={disable} 
-                className= {`${style.default_btn} ${style[variant]}`}
-                onClick={() => alert('well')}>{title}</button>
+                className= {`${style.default_btn} ${style[variant]}`}>{title}</button>
 
         </>
     )

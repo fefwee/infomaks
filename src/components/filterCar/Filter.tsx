@@ -7,11 +7,15 @@ import style from './filterCar.module.css'
 
 
 interface SelectCar {
-    selectOptions: string[]
+    selectOptions: SelectOptionsProps[]
+}
+interface SelectOptionsProps {
+    id:number
+    param:string
 }
 
 export const Filter: FC<SelectCar> = ({ selectOptions }) => {
-
+    
    
     const [open, setIsOpen] = useState<boolean>(false)
 
@@ -46,8 +50,8 @@ export const Filter: FC<SelectCar> = ({ selectOptions }) => {
 
                 <div className={style.drop_box}>
                     <ul >
-                        {selectOptions.map((options, index) => (
-                            <li onClick={() => changeOptions(options)} key={index}>{options}</li>
+                        {selectOptions.map((options) => (
+                            <li onClick={() => changeOptions(options.param)} key={options.id}>{options.param}</li>
                         )
                         )
                         }

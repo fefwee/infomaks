@@ -1,20 +1,24 @@
+.desc_container{
+  margin-bottom: 23px;
+}
 .car_box {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-top: 20px;
-  width: 300px;
+  width: 100%;
   height: 360px;
   grid-gap: 20px;
 }
 .img_car {
-  width: 100%;
   border: 1px solid #d9d9d9;
   border-radius: 15px 15px 0 0;
-  margin-bottom: 26px;
+}
+img{ 
+  max-width: 100%;
 }
 .car_box_item {
   position: relative;
-  width: 445px;
+  width:445px;
   margin-bottom: 73px;
 }
 .car_box_item h3 {
@@ -56,7 +60,6 @@
 }
 .availability_position {
   position: absolute;
-  position: absolute;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -64,4 +67,17 @@
   color: #ffffff;
   padding: 15px 34px;
   border-radius: 15px;
+}
+
+.desc_item{
+  display: flex;
+}
+.desc_item div {
+  margin-right: 20px;
+}
+.desc_marg h3,h4,p,span{
+  padding:10px 0 ;
+}
+.desc{
+  max-width: 834px;
 }

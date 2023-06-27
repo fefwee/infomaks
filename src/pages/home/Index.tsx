@@ -4,7 +4,6 @@ import { setSortItem } from "../../redux/createSlices/CarsSlice";
 import style from './index.module.css'
 import { Filter } from "../../components/filterCar/Filter";
 import { Search } from "../../components/searchCar/Search";
-import { Car } from "../../components/carPlace/Car";
 import { fetchAddFavoriteCars, fetchGetCars } from "../../redux/createActions/carActions";
 import { CarCard } from "../../components/carCard/CarCard";
 
@@ -20,19 +19,24 @@ export const Home: FC = () => {
         dispatch(fetchAddFavoriteCars(id))
     }
 
-    const selectOptions: string[] = [
-        'Сначала в наличии',
-        'По имени (A-Z)',
-        'По имени (Z-A)',
-        'Сначала новее',
-        'Сначала старше',
-        'Сначала дешевле',
-        'Сначала дороже'
+    interface SelectOptionsProps {
+        id:number
+        param:string
+    }
+    const selectOptions= [
+        {id:1,param:'Сначала в наличии'},
+        {id:2,param:'По имени (A-Z)'},
+        {id:3,param:'По имени (Z-A)'},
+        {id:4,param:'Сначала новее'},
+        {id:5,param:'Сначала старше'},
+        {id:6,param:'Сначала дешевле'},
+        {id:7,param:'Сначала дороже'}
     ]
 
     useEffect(() => {
         dispatch(fetchGetCars())
-        dispatch(setSortItem(selectOptions[0]))
+        dispatch(setSortItem(selectOptions[0].param)
+        )
     }, [])
 
     
@@ -47,6 +51,7 @@ export const Home: FC = () => {
             <div>
                 <CarCard cars={cars}
                     callBack={addFavoriteCar}
+                    imageName="BTN_ADD"
                 />
             </div>
 

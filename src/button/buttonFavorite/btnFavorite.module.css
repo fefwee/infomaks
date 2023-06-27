@@ -11,12 +11,20 @@
   .favorite_icon_disable {
     width: 27px;
     height: 24px;
-    border:1px solid red;
     background-image: url(../../../public/images/avaibilityBtn.png);
     background-repeat: no-repeat;
     background-size: cover;
     border:none;
 
+  }
+  .delete_btn {
+    width: 56px;
+    height: 57px;
+    background-image: url(../../../public/images/Delete\ button.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border:none;
+    background-color: transparent;
   }
   
   .favorite_icon:hover {

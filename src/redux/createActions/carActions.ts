@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { car, carFavorite } from "../createSlices/CarsSlice";
+import { Cars, CarFavorite } from "../createSlices/CarsSlice";
 
 export const fetchGetCars = createAsyncThunk<
-  car[],
+  Cars[],
   undefined,
   { rejectValue: string }>
   ("cars/fetchGetCars", async function (_, { rejectWithValue }) {
@@ -37,10 +37,9 @@ export const fetchGetCars = createAsyncThunk<
   }
 });
 
-/// search cars
 
 export const fetchSearchCars = createAsyncThunk<
-  car[],
+  Cars[],
   string,
   { rejectValue: string }>
   ("cars/fetchSearchCars", async function (search, { rejectWithValue }) {
@@ -75,7 +74,7 @@ export const fetchSearchCars = createAsyncThunk<
 });
 
 export const fetchAddFavoriteCars = createAsyncThunk<
-  carFavorite[],
+  CarFavorite[],
   number,
   { rejectValue: string }>
   ("filterCar/fetchAddFavoriteCars", async function (id, { rejectWithValue }) {

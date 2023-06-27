@@ -33,7 +33,11 @@ export const GLOBAL_STYLES = {
       fontSize: "14px",
       fontWeight: "500",
       lineHeight: "16px",
+      color:'#595959'
     },
+    img:{
+      maxWidth:'100%'
+    }
   } as const,
   "html, body, #root": {
     height: "100%",
